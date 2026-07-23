@@ -15,6 +15,24 @@ jobs:
       - name: Unzip project
         run: unzip -o RajMistriBD-Android-Project.zip -d .
 
+      - name: Fix root build.gradle repository conflict
+        run: |
+          cat > rajmistri-android/build.gradle << 'EOF'
+          buildscript {
+              repositories {
+                  google()
+                  mavenCentral()
+              }
+              dependencies {
+                  classpath 'com.android.tools.build:gradle:8.3.2'
+              }
+          }
+
+          task clean(type: Delete) {
+              delete rootProject.buildDir
+          }
+          EOF
+
       - name: Set up JDK 17
         uses: actions/setup-java@v4
         with:
