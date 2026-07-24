@@ -13,7 +13,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Unzip project
-        run: unzip -o RajMistriBD-Android-Project.zip -d .
+        run: unzip -o RajMistriBD-Android-Project-AdMob.zip -d .
 
       - name: Fix root build.gradle repository conflict
         run: |
